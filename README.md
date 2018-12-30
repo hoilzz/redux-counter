@@ -1,3 +1,3 @@
 # redux-counter
 
-ts로 전환하기
+연습삼아 ts로 전환해보기
