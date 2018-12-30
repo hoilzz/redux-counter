@@ -3,26 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "^23.3.10",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-scripts-ts": "3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
-    "immutable": "^3.8.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.5",
-    "redux": "^3.6.0",
-    "typescript": "^3.2.2"
-  },
-  "devDependencies": {
     "@types/react-redux": "^6.0.11",
     "@types/redux-actions": "^2.3.1",
-    "react-scripts": "1.0.7"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "typescript": "^3.2.2"
   }
 }
