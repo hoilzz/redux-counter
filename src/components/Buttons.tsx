@@ -3,8 +3,8 @@ import * as React from 'react';
 import './Buttons.css';
 
 interface IProps {
-  onCreate(): void;
-  onRemove(): void;
+  onCreate: () => void;
+  onRemove: () => void;
 }
 
 const Buttons: React.StatelessComponent<IProps> = ({ onCreate, onRemove }) => {

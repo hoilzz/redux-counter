@@ -1,18 +1,14 @@
 import * as React from 'react';
 import Counter from './Counter';
+import { ICounter } from '../reducers';
 
 import './CounterList.css';
 
-interface ICounter {
-  color: string;
-  number: number;
-}
-
 interface ICounterList {
   counters: ICounter[];
-  onIncrement(): void;
-  onDecrement(): void;
-  onSetColor(): void;
+  onIncrement: (index: number) => void;
+  onDecrement: (index: number) => void;
+  onSetColor: ({ index, color }: { index: number; color?: string }) => void;
 }
 
 const CounterList: React.StatelessComponent<ICounterList> = ({
@@ -21,11 +17,12 @@ const CounterList: React.StatelessComponent<ICounterList> = ({
   onDecrement,
   onSetColor,
 }) => {
+  console.log('...counters[0]', { ...counters[0] });
   const counterList = counters.map((counter, i) => (
     <Counter
       key={i}
       index={i}
-      {...counter.toJS()}
+      {...counter}
       onIncrement={onIncrement}
       onDecrement={onDecrement}
       onSetColor={onSetColor}
