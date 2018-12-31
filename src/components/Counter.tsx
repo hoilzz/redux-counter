@@ -5,8 +5,8 @@ interface ICounter {
   index: number;
   number: number;
   color: string;
-  onIncrement(index: number): void;
-  onDecrement(index: number): void;
+  onIncrement({ index }: { index: number }): void;
+  onDecrement({ index }: { index: number }): void;
   onSetColor({ index, color }: { index: number; color?: string }): void;
 }
 
@@ -18,11 +18,11 @@ const Counter: React.StatelessComponent<ICounter> = ({
   onDecrement,
   onSetColor,
 }) => {
-  const handleClick: () => void = () => onIncrement(index);
+  const handleClick: () => void = () => onIncrement({ index });
   const handleContextMenu: (e: React.FormEvent<HTMLDivElement>) => void = e => {
     console.log('handleContextMenu');
     e.preventDefault();
-    onDecrement(index);
+    onDecrement({ index });
   };
   const handleDoubleClick: () => void = () => onSetColor({ index });
 

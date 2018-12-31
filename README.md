@@ -125,3 +125,8 @@ export type Action =
       type: typeof types.REMOVE;
     };
 ```
+
+__TS 컴파일러가 불필요 or 불일치하는 props로부터 보호하지 않기 때문에 처리__
+
+`partialState` 객체를 사용시 spread operation 중에 보호된 객체에 병합 가능
+이렇게 하면 객체가 초기화되거나 일치하지 않는 속성을 가지는 것을 방지, state interface와 정확히 일치 

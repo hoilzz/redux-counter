@@ -1,23 +1,28 @@
+import * as React from 'react';
 import CounterList from '../components/CounterList';
-import * as actions from '../actions';
+import { actionCreators as counterActions } from '../actions';
 import { connect } from 'react-redux';
-import { IState } from '../reducers';
+import { IState, ICounter } from '../reducers';
+import { bindActionCreators } from 'redux';
 
-// store 안의 state 값을 props 로 연결해줍니다.
-const mapStateToProps = (state: IState) => ({
-  counters: state.counters,
-});
+interface IProps {
+  counters: ICounter[];
+  CounterActions: typeof counterActions;
+}
 
-const mapDispatchToProps = {
-  onIncrement: actions.increment,
-  onDecrement: actions.decrement,
-  onSetColor: actions.setColor,
-};
+class CounterListContainer extends React.Component<IProps> {
+  public render() {
+    // const { CounterActions, counters } = this.props;
+    return <CounterList {...this.props} />;
+  }
+}
 
 // 데이터와 함수들이 props 로 붙은 컴포넌트 생성
-const CounterListContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CounterList);
-
-export default CounterListContainer;
+export default connect(
+  (state: IState) => ({
+    counters: state.counters,
+  }),
+  dispatch => ({
+    CounterActions: bindActionCreators(counterActions, dispatch),
+  }),
+)(CounterListContainer);
